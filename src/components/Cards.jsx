@@ -1,4 +1,4 @@
-
+import react from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, removePost } from '/src/slicer/postSlice';
@@ -49,7 +49,7 @@ function Cards() {
                     ></i>
                     <h5 className="card-title">{post.title}</h5>
                     <p className="card-text">{post.body}</p>
-                    <img src="..." className="card-img-top" alt="..." />
+                    <img src="https://dummyimage.com/300x200/000/fff" className="card-img-top" alt="..." />
                   </div>
                 </div>
               </div>
