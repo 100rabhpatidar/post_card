@@ -1,7 +1,6 @@
-import react from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts, removePost } from '/src/slicer/postSlice';
+import { fetchPosts, deletePost } from '/src/slicer/postSlice';
 
 function Cards() {
   const dispatch = useDispatch();
@@ -9,21 +8,21 @@ function Cards() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
- 
+  // Fetch posts on component mount
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
- 
+  // Pagination logic
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfFirstPost + postsPerPage);
 
- 
+  // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const handleRemovePost = (postId) => {
-    dispatch(removePost(postId));
+    dispatch(deletePost(postId));
     if (currentPosts.length === 1 && currentPage > 1) {
       paginate(currentPage - 1);
     }
@@ -55,7 +54,7 @@ function Cards() {
               </div>
             ))}
           </div>
-          
+          {/* Pagination */}
           <nav aria-label="Page navigation example" className="mt-3 d-flex justify-content-center">
             <ul className="pagination">
               <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
