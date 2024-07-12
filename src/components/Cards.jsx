@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, deletePost } from '/src/slicer/postSlice';
-
+#55555555
 function Cards() {
   const dispatch = useDispatch();
   const { posts, status, error } = useSelector(state => state.posts);
